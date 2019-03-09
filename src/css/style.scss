@@ -3,6 +3,9 @@
 
 // Sane border box
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+body {
+  background-color: beige;
+}
 ul {
   list-style: none;
   margin: 0;
@@ -11,10 +14,14 @@ ul {
 .shopping-cart {
   display: flex;
   margin: 0 auto;
+  height: 90vh;
+  background-color: #fff;
+  max-width: 1000px;
   & > *{
     flex: 1 4 auto;
     padding: 2rem;
     border: 1rem double lighten(black,10%);
+    overflow: scroll;
   }
   .list-of-products {
     .product-list {
@@ -26,9 +33,18 @@ ul {
     clear: both;
     overflow: hidden;
 
+    .product-name {
+      display: flex;
+      text-transform: capitalize;
+      justify-content: space-between;
+      .price {
+        justify-content: flex-end;
+      }
+    }
     img {
       float: left;
       width: 150px;
+      height: 100px;
       margin-right: 1rem
     }
     }
