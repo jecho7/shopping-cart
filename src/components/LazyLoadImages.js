@@ -11,7 +11,9 @@ class LazyLoadImages extends Component {
   };
 
   handleChange = ({ isIntersecting }) => {
-    this.setState({ isIntersecting });
+    if (isIntersecting) {
+      this.setState({ isIntersecting });
+    }
   };
 
   render() {
