@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LazyLoadImages from './LazyLoadImages';
 
 class Product extends Component {
   quantityChange = event => {
@@ -15,7 +16,13 @@ class Product extends Component {
 
     return (
       <li className="product-list">
-        <img src={image} alt={name} />
+        <LazyLoadImages>
+          {isViewable => {
+            if (isViewable) {
+              return <img src={image} alt={name} />;
+            }
+          }}
+        </LazyLoadImages>
         <h3 className="product-name">
           {name}
           <span className="price">${price}</span>
