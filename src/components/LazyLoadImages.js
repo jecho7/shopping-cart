@@ -17,11 +17,11 @@ class LazyLoadImages extends Component {
   };
 
   render() {
+    const { isIntersecting } = this.state;
     const { tag: Tag, children, ...rest } = this.props;
-
     return (
       <Observer {...rest} onChange={this.handleChange}>
-        <Tag>{children(this.state.isIntersecting)}</Tag>
+        <Tag>{children(isIntersecting)}</Tag>
       </Observer>
     );
   }

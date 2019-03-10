@@ -12,7 +12,10 @@ class Product extends Component {
   };
 
   render() {
-    const { image, name, price } = this.props.productDetails;
+    const {
+      index,
+      productDetails: { image, name, price },
+    } = this.props;
 
     return (
       <li className="product-list">
@@ -29,7 +32,7 @@ class Product extends Component {
         </h3>
         <input
           type="text"
-          name={this.props.index}
+          name={index}
           onChange={this.quantityChange}
           placeholder="enter quantity"
         />

@@ -36,7 +36,7 @@ class App extends Component {
 
   sortProducts = productList => {
     const formatedObj = productList
-      .map((elem, i) => {
+      .map(elem => {
         elem.price = this.formatPrice(elem.price);
         return elem;
       })
@@ -53,24 +53,25 @@ class App extends Component {
   };
 
   render() {
+    const { fullName, products, order } = this.state;
     return (
       <div className="shopping-cart">
         <div className="products">
-          <Header shopperName={this.state.fullName} />
+          <Header shopperName={fullName} />
           <ul className="list-of-products">
-            {Object.keys(this.state.products).map(key => (
+            {Object.keys(products).map(key => (
               <Product
                 key={key}
                 index={key}
-                productDetails={this.state.products[key]}
-                order={this.state.order}
+                productDetails={products[key]}
+                order={order}
                 addToOrder={this.addToOrder}
               />
             ))}
           </ul>
         </div>
         <div className="totals">
-          <Order products={this.state.products} order={this.state.order} />
+          <Order products={products} order={order} />
         </div>
       </div>
     );
