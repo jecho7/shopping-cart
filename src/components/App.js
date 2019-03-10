@@ -25,10 +25,24 @@ class App extends Component {
       fullName,
       products: sortedProducts,
     });
-    console.log(sortedProducts);
   }
 
-  sortProducts = productList => productList.sort((a, b) => b.match - a.match);
+  formatPrice = str => {
+    let priceArr = [...str];
+    priceArr.splice(0, 1);
+    priceArr = priceArr.join('');
+    return parseFloat(priceArr).toFixed(2);
+  };
+
+  sortProducts = productList => {
+    const formatedObj = productList
+      .map((elem, i) => {
+        elem.price = this.formatPrice(elem.price);
+        return elem;
+      })
+      .sort((a, b) => b.match - a.match);
+    return formatedObj;
+  };
 
   addToOrder = (key, quantity) => {
     const order = { ...this.state.order };

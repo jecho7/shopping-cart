@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
 class Product extends Component {
-  formatPrice = str => {
-    const [dollarSign, ...rest] = str;
-    return `${dollarSign}${parseFloat(rest.join(''))}`;
-  };
-
   quantityChange = event => {
-    const quantity = parseFloat(event.currentTarget.value);
+    console.log(typeof event.currentTarget.value);
+    const quantity =
+      event.currentTarget.value === ''
+        ? 0
+        : parseFloat(event.currentTarget.value);
     this.props.addToOrder(this.props.index, quantity);
   };
 
@@ -19,7 +18,7 @@ class Product extends Component {
         <img src={image} alt={name} />
         <h3 className="product-name">
           {name}
-          <span className="price">{this.formatPrice(price)}</span>
+          <span className="price">${price}</span>
         </h3>
         <input
           type="text"
